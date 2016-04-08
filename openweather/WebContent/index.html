@@ -1,47 +1,39 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Previsão do Tempo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Previsão do Tempo</title>
 
-<meta name="author" content="Leander Seefeld">
-<link rel="icon" href="img/haze_64.png">
+    <meta name="author" content="Leander Seefeld">
+    <link rel="icon" href="img/haze_64.png">
 
-<link rel="stylesheet" type="text/css" href="style.css">
-<body ng-app="cmCollage" ng-controller="myCtrl">
+    <link rel="stylesheet" type="text/css" href="style.css">
 
-	<header>
-		<div class="logo"></div>
-		<div class="logo-text">Previsão do Tempo</div>
-	</header>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src='app/favorites.controller.js'></script>
+    <script src='app/fav-city.directive.js'></script>
+</head>
 
-	<section class="new-city">
-		<form>
-			<input type="text" placeholder="Cidade"> <input type="submit"
-				value="Cadastrar">
-		</form>
-	</section>
+<body ng-app="LeWeather" ng-controller="favoritesCtrl">
 
-	<section class="fav-cities">
-		<div class="fav-city" ng-repeat="city in favCities">
-			<!--            {{ city.name }}-->
-			Blumenau, BR
-		</div>
-		<div class="fav-city" ng-repeat="city in favCities">Indaial, BR
-		</div>
-		<div class="fav-city" ng-repeat="city in favCities">Auckland, NZ
-		</div>
-		<div class="fav-city" ng-repeat="city in favCities">Pomerode, BR
-		</div>
-		<div class="fav-city" ng-repeat="city in favCities">Cidad del
-			Mexico, MX</div>
-		<div class="fav-city" ng-repeat="city in favCities">Madrid, ES</div>
-		<div class="fav-city" ng-repeat="city in favCities">Ilhota, BR</div>
-		<div class="fav-city" ng-repeat="city in favCities">London, UK</div>
-	</section>
+    <header>
+        <div class="logo"></div>
+        <div class="logo-text">Previsão do Tempo</div>
+    </header>
 
+    <section class="new-city">
+        <form ng-submit="bookmark()">
+            <input type="text" name="city" placeholder="Cidade, BR" ng-model="newFavorite">
+            <input type="submit" value="Cadastrar">
+        </form>
+    </section>
 
-
+    <section class="fav-cities">
+        <div ng-if="!favCities">No favorite cities to display.</div>
+        <fav-city class="fav-city" ng-repeat="city in favCities" city="city" />
+    </section>
 
 </body>
+
 </html>

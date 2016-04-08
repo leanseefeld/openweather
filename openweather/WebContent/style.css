@@ -9,7 +9,7 @@ header {
 div.logo {
     background-image: url(img/slight_drizzle_256.png);
     background-repeat: no-repeat;
-/*    background-position: -20% -30%;*/
+    /*    background-position: -20% -30%;*/
     background-size: 100%;
     height: 10em;
     width: 10em;
@@ -21,7 +21,7 @@ div.logo-text {
     font-size: 3em;
     font-weight: bold;
     margin: 1em auto;
-    text-shadow: 2px 2px 1px; 
+    text-shadow: 2px 2px 1px;
 }
 section {
     margin: 1em;
@@ -50,11 +50,13 @@ section.new-city {
 .new-city input[type="submit"] {
     /*    background-color: #00CCFF;*/
 }
+
 /*
 .new-city input[type="submit"]:hover {
     background-color: darkblue;
 }
 */
+
 .fav-cities {
     margin: auto 10%;
     display: flex;
@@ -67,12 +69,31 @@ section.new-city {
     border-style: none;
     display: inline-block;
     margin: 0.5em;
-    padding: 1.0em 0.5em 0 0.5em;
+    padding: 1.0em 0.8em 0 0.8em;
     background-color: #70D0FF;
     text-align: center;
     height: 2em;
-    overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
     min-width: 4em;
+}
+fav-city > .remove {
+    background-color: #EA1B1B;
+    width: 28px;
+    height: 16px;
+    color: white;
+    border-radius: 3px;
+    float: right;
+    font-weight: bold;
+    position: relative;
+    top: -20px;
+    right: -7px;
+    margin: auto -14px;
+    font-size: small;
+}
+fav-city > .remove::after {
+    content: 'x';
+}
+fav-city > .remove:hover {
+    background-color: #FB5050;
 }

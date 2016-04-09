@@ -6,7 +6,7 @@ app.controller('FavoritesController', function ($scope, $http, $log) {
     }, function error(response) {
         $log.error(response);
 
-        // TODO: for testing without the server; remove when complete
+        // for testing without the server; gets overwritten after load
         $scope.favCities = [{
             "country": "BR",
             "favorite": true,
@@ -38,7 +38,6 @@ app.controller('FavoritesController', function ($scope, $http, $log) {
                 city: $scope.newFavorite
             }
         }).then(function success(response) {
-            $log.log(response.data);
             var i, isPresent, newCity = response.data;
             for (i = 0; i < $scope.favCities.length; i++) {
                 if ($scope.favCities[i].id === newCity.id) {

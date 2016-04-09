@@ -42,7 +42,6 @@
         <div class="main-weather">
             <h1>{{ activeCity.name + ', ' + activeCity.country }}</h1>
             <img ng-if="weather[0]" src="http://openweathermap.org/img/w/{{ weather[0].weather[0].icon }}.png" />
-            <!--            <span class="weather-data name">{{ weather[0].weather[0].main }}</span>-->
             <span class="weather-data description">{{ weather[0].weather[0].description }}</span>
             <div class="weather-data temperature-group">
                 <span class="label">Temperaturas:</span>

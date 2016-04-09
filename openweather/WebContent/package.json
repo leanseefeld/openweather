@@ -1,6 +1,6 @@
 {
   "name": "LeWeather",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "scripts": {
     "start": "npm run lite",
     "lite": "lite-server"

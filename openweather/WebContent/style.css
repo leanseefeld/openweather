@@ -6,9 +6,6 @@ body {
     color: white;
     flex-direction: column;
 }
-body > * {
-    /*    min-width: 200px;*/
-}
 header {
     margin: auto 10%;
     padding: 0.1em;
@@ -31,10 +28,6 @@ div.logo-text {
 }
 section {
     margin: 1em;
-}
-section.new-city {
-    /*      margin: auto 30%;
-    width: 30em; */
 }
 .new-city input {
     padding: 5px;

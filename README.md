@@ -17,7 +17,9 @@ possuir as seguintes ferramentas:
 ### Configuração 
 
 No MySQL, importe a base através do arquivo
-[openweather.sql](https://raw.githubusercontent.com/leanseefeld/openweather/master/resources/openweather.sql). Em seguida, faça o deploy do projeto pelo Eclipse.
+[openweather.sql](https://raw.githubusercontent.com/leanseefeld/openweather/master/resources/openweather.sql). 
+Pode ser necessário editar o arquivo `/openweather/src/META-INF/persistence.xml` para configurar corretamente sua base.
+Em seguida, faça o deploy do projeto pelo Eclipse.
 
 Ao acessar a URL local (provavelmente
 [http://localhost:8080/openweather](http://localhost:8080/openweather)), você
@@ -45,3 +47,13 @@ minuto, amenizando a necessidade de implementar cache.
 A aplicação cliente, desenvolvida em AngularJS, possui um controlador para
 gerenciamento das cidades favoritas (é possível cadastrar e remover favoritos)
 e um para a exibição e consulta de previsões.
+Foi criada uma diretiva para exibição das cidades pois a mesma possui uma ação própria (seleção).
+
+## Melhorias
+
+No servidor, o projeto poderia ser adaptado para um gerenciador de dependências, como Maven ou Gradle.
+
+No cliente, poderia ser criada uma diretiva para exibição da previsão de cada dia, que hoje é realizada através de `ng-repeat` e possui código duplicado no HTML.
+Poderia também ser utilizado um pré-processador CSS para melhorar a legibilidade do arquivo CSS.
+Em questão de usabilidade, as previsões deveriam possuir uma divisão clara entre os dias. Atualmente são listadas as previsões de 3 em 3 horas, sendo identificadas pela data.
+

@@ -13,8 +13,7 @@ app.controller('FavoritesController', function ($scope, $http, $log) {
             "id": 3468879,
             "lat": -48.9175,
             "lon": -27.09806,
-            "name": "Brusque",
-            weather: [] // here is the most relevant data
+            "name": "Brusque"
         }];
     });
 

@@ -1,14 +1,11 @@
 package io.leanseefeld.openweather.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -25,9 +22,6 @@ public class City implements Serializable {
 	@Column(name = "lastsync")
 	private Date lastUpdate;
 	private boolean favorite;
-
-	@OneToMany(mappedBy = "city")
-	private final List<Weather> forecast = new ArrayList<>(5);
 
 	public int getId() {
 		return id;
@@ -77,10 +71,6 @@ public class City implements Serializable {
 		this.lastUpdate = lastUpdate;
 	}
 
-	public List<Weather> getForecast() {
-		return forecast;
-	}
-
 	public boolean isFavorite() {
 		return favorite;
 	}
@@ -95,7 +85,6 @@ public class City implements Serializable {
 		int result = 1;
 		result = prime * result + ((country == null) ? 0 : country.hashCode());
 		result = prime * result + (favorite ? 1231 : 1237);
-		result = prime * result + ((forecast == null) ? 0 : forecast.hashCode());
 		result = prime * result + id;
 		result = prime * result + ((lastUpdate == null) ? 0 : lastUpdate.hashCode());
 		result = prime * result + Float.floatToIntBits(lat);
@@ -124,13 +113,6 @@ public class City implements Serializable {
 			return false;
 		}
 		if (favorite != other.favorite) {
-			return false;
-		}
-		if (forecast == null) {
-			if (other.forecast != null) {
-				return false;
-			}
-		} else if (!forecast.equals(other.forecast)) {
 			return false;
 		}
 		if (id != other.id) {

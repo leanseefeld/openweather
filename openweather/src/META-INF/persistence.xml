@@ -5,7 +5,6 @@
 
 	<persistence-unit name="openweather" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<class>io.leanseefeld.openweather.model.Weather</class>
 		<class>io.leanseefeld.openweather.model.City</class>
 		<properties>
 			<property name="hibernate.dialect" value="org.hibernate.dialect.MySQLInnoDBDialect" />

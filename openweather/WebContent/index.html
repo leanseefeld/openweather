@@ -25,12 +25,12 @@
     <section class="new-city">
         <form ng-submit="bookmark()">
             <input type="text" name="city" placeholder="Cidade, BR" ng-model="newFavorite">
-            <input type="submit" value="Cadastrar">
+            <input type="submit" value="Favoritar">
         </form>
     </section>
 
     <section class="fav-cities">
-        <div ng-if="!favCities">No favorite cities to display.</div>
+        <div class="tinted-glass-black" ng-if="!favCities">No favorite cities to display.</div>
         <fav-city class="fav-city" ng-repeat="city in favCities" city="city" />
     </section>
 

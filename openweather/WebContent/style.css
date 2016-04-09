@@ -1,6 +1,9 @@
 body {
     font-family: 'Helvetica', 'Verdana';
-    background-color: #DCF3FF;
+    background-color: #015C97;
+    background-image: url(img/cloud_15.png);
+    background-size: 200%;
+    color: white;
 }
 header {
     margin: auto 10%;
@@ -8,20 +11,18 @@ header {
 }
 div.logo {
     background-image: url(img/slight_drizzle_256.png);
-    background-repeat: no-repeat;
-    /*    background-position: -20% -30%;*/
     background-size: 100%;
     height: 10em;
     width: 10em;
-    float: left;
+    display: inline-block;
 }
 div.logo-text {
-    color: #333;
-    display: block;
-    font-size: 3em;
+    display: inline-block;
+    font-size: 3.3em;
     font-weight: bold;
-    margin: 1em auto;
-    text-shadow: 2px 2px 1px;
+    text-shadow: 2px 2px 5px rgba(255, 255, 255, .5);
+    font-family: 'Segoe Script';
+    vertical-align: top;
 }
 section {
     margin: 1em;
@@ -31,32 +32,39 @@ section.new-city {
     //width: 30em;
 }
 .new-city input {
-    padding: 0.3em;
-    margin: 0.3em;
-    font-size: 1em;
-    border-radius: 3px;
-    /*    border-width: 3px;*/
-    /*    border-style: solid;*/
-    /*    border-color: darkcyan;*/
+    padding: 5px;
+    margin: 30px 10px;
+    font-size: 1.1em;
+    border-radius: 0px;
 }
 .new-city > form {
     display: flex;
     justify-content: center;
 }
 .new-city input[type="text"] {
-    width: 20em;
+    width: 18em;
     text-align: center;
+    font-style: italic;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    background-color: rgba(255, 255, 255, 0.7);
+}
+.new-city input[type="text"]:hover {
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.new-city input[type="text"]:focus {
+    background-color: rgba(255, 255, 255, 0.9);
 }
 .new-city input[type="submit"] {
-    /*    background-color: #00CCFF;*/
+    background-color: rgba(255, 188, 0, 0.9);
+    border: solid 2px rgb(255, 188, 0);
+    font-weight: bold;
+    padding: 10px;
+    color: white;
 }
-
-/*
-.new-city input[type="submit"]:hover {
-    background-color: darkblue;
+.new-city input[type="submit"]:hover,
+.new-city input[type="submit"]:focus {
+    background-color: rgba(255, 209, 78, 0.9);
 }
-*/
-
 .fav-cities {
     margin: auto 10%;
     display: flex;
@@ -64,36 +72,72 @@ section.new-city {
     flex-wrap: wrap;
     justify-content: center;
 }
-.fav-city {
-    border-radius: 3px;
+.tinted-glass-black,
+.fav-city,
+.fav-city.ng-enter-active {
+    background-color: rgba(0, 0, 0, .4);
     border-style: none;
     display: inline-block;
-    margin: 0.5em;
-    padding: 1.0em 0.8em 0 0.8em;
-    background-color: #70D0FF;
-    text-align: center;
-    height: 2em;
     text-overflow: ellipsis;
     white-space: nowrap;
-    min-width: 4em;
+    opacity: 1;
+    margin: 0.3em 0.5em;
+    padding: 0.6em 1em;
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
+    border-radius: 1em;
 }
-fav-city > .remove {
-    background-color: #EA1B1B;
-    width: 28px;
-    height: 16px;
-    color: white;
-    border-radius: 3px;
+.fav-city,
+.fav-city.ng-enter-active {
+    cursor: pointer;
+    max-width: 10em;
+    min-width: 4em;
+    text-align: center;
+}
+.fav-city:hover {
+    background-color: rgba(100, 100, 100, .3);
+    box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
+    transition: all .2s;
+}
+.fav-city > span {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: block;
+}
+.fav-city > .remove {
+    background-color: #FF4100;
+    width: 18px;
+    height: 18px;
+    border-radius: 50%;
     float: right;
     font-weight: bold;
     position: relative;
-    top: -20px;
-    right: -7px;
-    margin: auto -14px;
-    font-size: small;
+    top: -15px;
+    right: -8px;
+    margin: auto -10px;
+    line-height: 18px;
+    opacity: .8;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
 }
-fav-city > .remove::after {
+.fav-city > .remove::after {
     content: 'x';
 }
-fav-city > .remove:hover {
-    background-color: #FB5050;
+.fav-city > .remove:hover {
+    background-color: #FF642F;
+}
+.fav-city > .remove.ng-hide {
+    opacity: 0;
+    display: block !important;
+    transition: all linear .1s;
+    width: 0px;
+    height: 0px;
+    top: -10px;
+    right: -3px;
+    font-size: 1px;
+    line-height: 1px;
+}
+
+.weather-info {
+    display: block;
+    border-radius: 0px;
 }

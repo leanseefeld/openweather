@@ -32,6 +32,14 @@ public class Weather implements Serializable {
 	private float windSpeed;
 	private float windDeg;
 
+	private String weather;
+	private int weather_id;
+	private String description;
+	private String icon;
+
+	private int clouds;
+	private float rain3h;
+
 	public int getCity() {
 		return city;
 	}
@@ -125,19 +133,73 @@ public class Weather implements Serializable {
 		this.windDeg = windDeg;
 	}
 
+	public String getWeather() {
+		return weather;
+	}
+
+	public void setWeather(String weather) {
+		this.weather = weather;
+	}
+
+	public int getWeather_id() {
+		return weather_id;
+	}
+
+	public void setWeather_id(int weather_id) {
+		this.weather_id = weather_id;
+	}
+
+	public String getDescription() {
+		return description;
+	}
+
+	public void setDescription(String description) {
+		this.description = description;
+	}
+
+	public String getIcon() {
+		return icon;
+	}
+
+	public void setIcon(String icon) {
+		this.icon = icon;
+	}
+
+	public int getClouds() {
+		return clouds;
+	}
+
+	public void setClouds(int clouds) {
+		this.clouds = clouds;
+	}
+
+	public float getRain3h() {
+		return rain3h;
+	}
+
+	public void setRain3h(float rain3h) {
+		this.rain3h = rain3h;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
 		result = prime * result + city;
+		result = prime * result + clouds;
 		result = prime * result + ((day == null) ? 0 : day.hashCode());
+		result = prime * result + ((description == null) ? 0 : description.hashCode());
 		result = prime * result + Float.floatToIntBits(grnd_level);
 		result = prime * result + Float.floatToIntBits(humidity);
+		result = prime * result + ((icon == null) ? 0 : icon.hashCode());
 		result = prime * result + Float.floatToIntBits(pressure);
+		result = prime * result + Float.floatToIntBits(rain3h);
 		result = prime * result + Float.floatToIntBits(sea_level);
 		result = prime * result + Float.floatToIntBits(temp);
 		result = prime * result + Float.floatToIntBits(temp_max);
 		result = prime * result + Float.floatToIntBits(temp_min);
+		result = prime * result + ((weather == null) ? 0 : weather.hashCode());
+		result = prime * result + weather_id;
 		result = prime * result + Float.floatToIntBits(windDeg);
 		result = prime * result + Float.floatToIntBits(windSpeed);
 		return result;
@@ -145,53 +207,59 @@ public class Weather implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj) {
+		if (this == obj)
 			return true;
-		}
-		if (obj == null) {
+		if (obj == null)
 			return false;
-		}
-		if (getClass() != obj.getClass()) {
+		if (getClass() != obj.getClass())
 			return false;
-		}
 		Weather other = (Weather) obj;
-		if (city != other.city) {
+		if (city != other.city)
 			return false;
-		}
+		if (clouds != other.clouds)
+			return false;
 		if (day == null) {
-			if (other.day != null) {
+			if (other.day != null)
 				return false;
-			}
-		} else if (!day.equals(other.day)) {
+		} else if (!day.equals(other.day))
 			return false;
-		}
-		if (Float.floatToIntBits(grnd_level) != Float.floatToIntBits(other.grnd_level)) {
+		if (description == null) {
+			if (other.description != null)
+				return false;
+		} else if (!description.equals(other.description))
 			return false;
-		}
-		if (Float.floatToIntBits(humidity) != Float.floatToIntBits(other.humidity)) {
+		if (Float.floatToIntBits(grnd_level) != Float.floatToIntBits(other.grnd_level))
 			return false;
-		}
-		if (Float.floatToIntBits(pressure) != Float.floatToIntBits(other.pressure)) {
+		if (Float.floatToIntBits(humidity) != Float.floatToIntBits(other.humidity))
 			return false;
-		}
-		if (Float.floatToIntBits(sea_level) != Float.floatToIntBits(other.sea_level)) {
+		if (icon == null) {
+			if (other.icon != null)
+				return false;
+		} else if (!icon.equals(other.icon))
 			return false;
-		}
-		if (Float.floatToIntBits(temp) != Float.floatToIntBits(other.temp)) {
+		if (Float.floatToIntBits(pressure) != Float.floatToIntBits(other.pressure))
 			return false;
-		}
-		if (Float.floatToIntBits(temp_max) != Float.floatToIntBits(other.temp_max)) {
+		if (Float.floatToIntBits(rain3h) != Float.floatToIntBits(other.rain3h))
 			return false;
-		}
-		if (Float.floatToIntBits(temp_min) != Float.floatToIntBits(other.temp_min)) {
+		if (Float.floatToIntBits(sea_level) != Float.floatToIntBits(other.sea_level))
 			return false;
-		}
-		if (Float.floatToIntBits(windDeg) != Float.floatToIntBits(other.windDeg)) {
+		if (Float.floatToIntBits(temp) != Float.floatToIntBits(other.temp))
 			return false;
-		}
-		if (Float.floatToIntBits(windSpeed) != Float.floatToIntBits(other.windSpeed)) {
+		if (Float.floatToIntBits(temp_max) != Float.floatToIntBits(other.temp_max))
 			return false;
-		}
+		if (Float.floatToIntBits(temp_min) != Float.floatToIntBits(other.temp_min))
+			return false;
+		if (weather == null) {
+			if (other.weather != null)
+				return false;
+		} else if (!weather.equals(other.weather))
+			return false;
+		if (weather_id != other.weather_id)
+			return false;
+		if (Float.floatToIntBits(windDeg) != Float.floatToIntBits(other.windDeg))
+			return false;
+		if (Float.floatToIntBits(windSpeed) != Float.floatToIntBits(other.windSpeed))
+			return false;
 		return true;
 	}
 

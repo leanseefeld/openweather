@@ -93,6 +93,7 @@ section.new-city {
     min-width: 4em;
     text-align: center;
 }
+.fav-city.active,
 .fav-city:hover {
     background-color: rgba(100, 100, 100, .3);
     box-shadow: 0px 2px 3px rgba(0, 0, 0, 0.3);
@@ -138,6 +139,20 @@ section.new-city {
 }
 
 .weather-info {
+    margin-top: 3em;
     display: block;
     border-radius: 0px;
+    overflow: auto;
+}
+.weather-data {
+    display: inline-block;
+    background-color: rgba(0,0,0,.2);
+    padding: 5px;
+    margin: 2.5px;
+}
+
+.complimentary-weather {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:space-between;
 }

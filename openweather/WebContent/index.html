@@ -11,11 +11,14 @@
     <link rel="stylesheet" type="text/css" href="style.css">
 
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0/angular.js"></script>
+    <script src='app/app.js'></script>
+    <script src='app/start.filter.js'></script>
     <script src='app/favorites.controller.js'></script>
+    <script src='app/weather.controller.js'></script>
     <script src='app/fav-city.directive.js'></script>
 </head>
 
-<body ng-app="LeWeather" ng-controller="favoritesCtrl">
+<body ng-app="LeWeather" ng-controller="FavoritesController">
 
     <header>
         <div class="logo"></div>
@@ -31,9 +34,51 @@
 
     <section class="fav-cities">
         <div class="tinted-glass-black" ng-if="!favCities">No favorite cities to display.</div>
-        <fav-city class="fav-city" ng-repeat="city in favCities" city="city" />
+        <fav-city class="fav-city" ng-repeat="city in favCities" city="city" ng-class="{active: city.active}" />
     </section>
 
+    <section class="tinted-glass-black weather-info" ng-show="activeCity" ng-controller="WeatherController">
+        <div class="main-weather">
+            <h1>{{ activeCity.name + ', ' + activeCity.country }}</h1>
+            <span class="weather-data name">{{ weather[0].weather[0].main }}</span>
+            <img ng-if="weather[0]" src="http://openweathermap.org/img/w/{{ weather[0].weather[0].icon }}.png" />
+            <span class="weather-data main-temp">{{ weather[0].main.temp }}</span>
+            <span class="weather-data max-temp">{{ weather[0].main.temp_max }}</span>
+            <span class="weather-data min-temp">{{ weather[0].main.temp_min }}</span>
+        </div>
+        <div class="complimentary-weather">
+            <span class="weather-data description">{{ weather[0].weather[0].description }}</span>
+            <span class="weather-data day">{{ weather[0].dt_txt }}</span>
+            <span class="weather-data pressure">{{ weather[0].main.pressure || N/a }}</span>
+            <span class="weather-data sea-level">{{ weather[0].main.sea_level || N/a }}</span>
+            <span class="weather-data grnd-level">{{ weather[0].main.grnd_level || N/a }}</span>
+            <span class="weather-data humidity">{{ weather[0].main.humidity || N/a }}</span>
+            <span class="weather-data clouds">{{ weather[0].clouds.all || N/a }}</span>
+            <span class="weather-data rain3h">{{ weather[0].rain.rain3h || N/a }}</span>
+        </div>
+        <div class="weather-next-days" ng-show="weather.length > 1">
+            <h3>Próximos dias</h3>
+            <div>
+                <div class="weather-day" ng-repeat="dayWeather in activeCity.weather | start:1">
+                    <span class="weather-data name">{{ dayWeather.weather[0].main }}</span>
+                    <img ng-if="dayWeather" src="http://openweathermap.org/img/w/{{ dayWeather.weather[0].icon }}.png" />
+                    <span class="weather-data main-temp">{{ dayWeather.main.temp }}</span>
+                    <span class="weather-data max-temp">{{dayWeather.main.temp_max }}</span>
+                    <span class="weather-data min-temp">{{ dayWeather.main.temp_min }}</span>
+
+                    <span class="weather-data description">{{ dayWeather.weather[0].description }}</span>
+                    <span class="weather-data day">{{ dayWeather.dt_txt }}</span>
+                    <span class="weather-data pressure">{{ dayWeather.main.pressure || N/a }}</span>
+                    <span class="weather-data sea-level">{{ dayWeather.main.sea_level || N/a }}</span>
+                    <span class="weather-data grnd-level">{{ dayWeather.main.grnd_level || N/a }}</span>
+                    <span class="weather-data humidity">{{ dayWeather.main.humidity || N/a }}</span>
+                    <span class="weather-data clouds">{{ dayWeather.clouds.all || N/a }}</span>
+                    <span class="weather-data rain3h">{{ dayWeather.rain.rain3h || N/a }}</span>
+                </div>
+
+            </div>
+        </div>
+    </section>
 </body>
 
 </html>

@@ -19,13 +19,15 @@ app.directive('favCity', function ($http) {
             $scope.mouseover = false;
             $scope.$apply();
         });
-        $element.bind('click', function () {
+        $element.bind('click', function (event) {
             if (!$scope.city.active) {
                 $scope.$root.$broadcast('cityActivated', $scope.city);
+                $scope.$apply();
             }
         });
 
-        $scope.unfavorite = function unfavorite() {
+        $scope.unfavorite = function unfavorite($event) {
+            $event.stopPropagation();
             $scope.$emit('removeFavorite', $scope.city);
         };
     }

@@ -64,11 +64,13 @@ section {
     background-color: rgba(255, 209, 78, 0.9);
 }
 .fav-cities {
-    margin: auto 10%;
+    margin: 0 auto;
+    padding: 0 3em;
+    max-width: 850px;
     display: flex;
     flex-grow: 1;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content:space-between;
 }
 .tinted-glass-black,
 .fav-city,
@@ -82,7 +84,7 @@ section {
     margin: 0.3em 0.5em;
     padding: 0.6em 1em;
     box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.2);
-    border-radius: 1em;
+    transition: all linear .1s;
 }
 .fav-city,
 .fav-city.ng-enter-active {
@@ -106,20 +108,17 @@ section {
     background-color: #FF4100;
     width: 18px;
     height: 18px;
-    border-radius: 50%;
     float: right;
     font-weight: bold;
     position: relative;
     top: -15px;
-    right: -8px;
+    right: -15px;
     margin: auto -10px;
     line-height: 18px;
     opacity: .8;
     overflow: hidden;
     box-shadow: 0 1px 3px rgba(0, 0, 0, .3);
-}
-.fav-city > .remove::after {
-    content: 'x';
+    transition: all linear .1s;
 }
 .fav-city > .remove:hover {
     background-color: #FF642F;
@@ -127,13 +126,13 @@ section {
 .fav-city > .remove.ng-hide {
     opacity: 0;
     display: block !important;
-    transition: all linear .1s;
     width: 0px;
     height: 0px;
     top: -10px;
     right: -3px;
     font-size: 1px;
     line-height: 1px;
+    transition: all linear .1s;
 }
 .weather-info {
     padding: 1em;

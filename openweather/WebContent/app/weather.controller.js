@@ -1,4 +1,4 @@
-app.controller('WeatherController', function ($scope, $http, $log) {
+app.controller('WeatherController', function ($scope, $http, $timeout, $log) {
 
     var baseWeatherUri = 'http://api.openweathermap.org/data/2.5/forecast?appid=' + app.openweatherKey + '&id=';
 
@@ -9,10 +9,12 @@ app.controller('WeatherController', function ($scope, $http, $log) {
     });
 
     function loadWeather() {
+        $scope.weather = undefined;
         if ($scope.activeCity.weather) {
-            $scope.weather = $scope.activeCity.weather;
+            $timeout(function () {
+                $scope.weather = $scope.activeCity.weather;
+            }, 200);
         } else {
-            $scope.weather = undefined;
             $http.get(baseWeatherUri + $scope.activeCity.id).then(
                 function success(response) {
                     $scope.weather = $scope.activeCity.weather = response.data.list;

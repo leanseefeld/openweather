@@ -5,6 +5,7 @@ body {
     background-size: 200%;
     color: white;
     flex-direction: column;
+    overflow-y: scroll;
 }
 header {
     margin: auto 10%;

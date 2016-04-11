@@ -38,24 +38,24 @@
         <fav-city class="fav-city" ng-repeat="city in favCities" city="city" ng-class="{active: city.active}" />
     </section>
 
-    <section class="tinted-glass-black weather-info" ng-show="activeCity" ng-controller="WeatherController">
+    <section class="tinted-glass-black weather-info" ng-show="weather" ng-controller="WeatherController">
         <div class="main-weather">
             <h1>{{ activeCity.name + ', ' + activeCity.country }}</h1>
             <img ng-if="weather[0]" src="http://openweathermap.org/img/w/{{ weather[0].weather[0].icon }}.png" />
-            <span class="weather-data description">{{ weather[0].weather[0].description }}</span>
+            <span class="weather-data description">{{ weather[0].weather[0].description || '-'}}</span>
             <div class="weather-data temperature-group">
                 <span class="label">Temperaturas:</span>
-                <span class="weather-data main-temp">{{ weather[0].main.temp | celsius }}</span>
+                <span class="weather-data main-temp">{{ weather[0].main.temp | celsius:'-'}}</span>
                 <div class="weather-data min-max">
-                    <span class="weather-data max-temp">{{ weather[0].main.temp_max | celsius }}</span>
-                    <span class="weather-data min-temp">{{ weather[0].main.temp_min | celsius }}</span>
+                    <span class="weather-data max-temp">{{ weather[0].main.temp_max | celsius:'-' }}</span>
+                    <span class="weather-data min-temp">{{ weather[0].main.temp_min | celsius:'-' }}</span>
                 </div>
             </div>
         </div>
         <div class="complimentary-weather">
             <div class="main">
-                <span class="weather-data pressure">Pressão: {{ weather[0].main.pressure || 'N/a' }}</span>
-                <span class="weather-data sea-level">Nível do mar: {{ weather[0].main.sea_level || 'N/a' }}</span>
+                <span class="weather-data pressure">Pressão: {{ weather[0].main.pressure || '0' }}</span>
+                <span class="weather-data sea-level">Nível do mar: {{ weather[0].main.sea_level || '0' }}</span>
                 <span class="weather-data humidity">Humidade: {{ weather[0].main.humidity || '0' }}%</span>
                 <span class="weather-data clouds">Nuvens: {{ weather[0].clouds.all || '0' }}%</span>
                 <span class="weather-data rain3h">Precipitação (3h): {{ weather[0].rain['3h'] || '0' }}mm</span>

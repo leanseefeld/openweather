@@ -12,6 +12,7 @@ app.controller('WeatherController', function ($scope, $http, $log) {
         if ($scope.activeCity.weather) {
             $scope.weather = $scope.activeCity.weather;
         } else {
+            $scope.weather = undefined;
             $http.get(baseWeatherUri + $scope.activeCity.id).then(
                 function success(response) {
                     $scope.weather = $scope.activeCity.weather = response.data.list;
